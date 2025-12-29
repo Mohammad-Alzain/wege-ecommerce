@@ -1,19 +1,20 @@
 import { IProduct } from "@/data/products";
 
-export interface ProductsFilters {
+export interface IProductsFilters {
   search?: string;
-  category?: string;
+  categories?: string[];
   minPrice?: number;
   maxPrice?: number;
 }
 
 export const fetchProducts = async (
-  filters?: ProductsFilters
+  filters?: IProductsFilters
 ): Promise<IProduct[]> => {
   const params = new URLSearchParams();
 
   if (filters?.search) params.set("search", filters.search);
-  if (filters?.category) params.set("category", filters.category);
+  if (filters?.categories)
+    params.set("categories", JSON.stringify(filters.categories));
   if (filters?.minPrice !== undefined)
     params.set("minPrice", String(filters.minPrice));
   if (filters?.maxPrice !== undefined)

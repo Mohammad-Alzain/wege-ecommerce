@@ -5,7 +5,16 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
   const search = searchParams.get("search")?.toLowerCase();
-  const category = searchParams.get("category");
+  const categoriesStr = searchParams.get("categories");
+  let categories: string[] = [];
+  if (categoriesStr) {
+    try {
+      categories = JSON.parse(categoriesStr);
+    } catch (error) {
+      console.error("Error parsing categories:", error);
+      categories = [];
+    }
+  }
   const minPrice = Number(searchParams.get("minPrice"));
   const maxPrice = Number(searchParams.get("maxPrice"));
 
@@ -15,9 +24,9 @@ export async function GET(req: NextRequest) {
       product.title.toLowerCase().includes(search)
     );
   }
-  if (!!category) {
+  if (categories.length > 0) {
     filteredProducts = filteredProducts.filter((product) =>
-      product.category.includes(category)
+      categories.some((cat) => product.category.includes(cat))
     );
   }
   if (!isNaN(minPrice) && !!minPrice) {

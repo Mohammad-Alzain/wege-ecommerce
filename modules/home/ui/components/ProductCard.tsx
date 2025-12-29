@@ -5,13 +5,14 @@ import { IProduct } from "@/data/products";
 import useCartStore from "@/modules/cart/core/stores/CartStore";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const addToCart = useCartStore((state) => state.addToCart);
 
   return (
-    <div>
+    <Link href={`/products/${product.id}`}>
       <Card
         className={twMerge(
           "rounded-sm p-0 max-w-69 shadow-sm xl:w-69 hover:shadow-2xl hover:border-b-primary border-b-2 border-gray-100",
@@ -58,7 +59,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </Link>
   );
 };
 
