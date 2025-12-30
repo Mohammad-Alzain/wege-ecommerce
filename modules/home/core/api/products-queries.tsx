@@ -1,3 +1,4 @@
+"use client";
 import { IProduct } from "@/data/products";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "./products-apis";

@@ -4,7 +4,7 @@ import { ICartItem } from "../../core/interfaces";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRightIcon, ShoppingCart, Trash } from "lucide-react";
+import { ShoppingCart, Trash } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import {
