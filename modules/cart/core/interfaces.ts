@@ -6,6 +6,7 @@ export interface ICartItem extends IProduct {
 export interface ICartState {
   cart: ICartItem[];
   addToCart: (product: IProduct) => void;
+  updateQuantity: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
   getTotalPrice: () => number;
