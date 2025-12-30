@@ -1,3 +1,4 @@
+import { Spinner } from "@/components/ui/spinner";
 import { fetchProducts } from "@/modules/home/core/api/products-apis";
 import ProductsPage from "@/modules/home/ui/page/ProductsPage";
 import {
@@ -17,7 +18,13 @@ export default async function Home() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<div>Loading products...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center h-[70vh]">
+            <Spinner className="text-2xl w-8 h-8 text-primary" />
+          </div>
+        }
+      >
         <ProductsPage />
       </Suspense>
     </HydrationBoundary>
