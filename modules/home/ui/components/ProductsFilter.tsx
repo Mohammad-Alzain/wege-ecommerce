@@ -12,11 +12,10 @@ import {
 import { ChevronDown } from "lucide-react";
 import { categories as ALL_CATEGORIES } from "@/data/categories";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const ProductsFilter = () => {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const [searchText, setSearchText] = useState(
     searchParams.get("search") || ""
   );
@@ -35,6 +34,7 @@ const ProductsFilter = () => {
   const debouncedSearch = useDebounce(searchText, 500);
   const debouncedMinPrice = useDebounce(minPrice, 500);
   const debouncedMaxPrice = useDebounce(maxPrice, 500);
+
   useEffect(() => {
     const params = new URLSearchParams();
     if (debouncedSearch) params.set("search", debouncedSearch as string);
@@ -44,14 +44,11 @@ const ProductsFilter = () => {
       params.set("maxPrice", String(debouncedMaxPrice));
     if (categories.length > 0) params.set("categories", categories.join(","));
 
-    router.replace(`?${params.toString()}`, { scroll: false });
-  }, [
-    debouncedSearch,
-    debouncedMinPrice,
-    debouncedMaxPrice,
-    categories,
-    router,
-  ]);
+    const newUrl = params.toString()
+      ? `?${params.toString()}`
+      : window.location.pathname;
+    window.history.replaceState(null, "", newUrl);
+  }, [debouncedSearch, debouncedMinPrice, debouncedMaxPrice, categories]);
 
   return (
     <div
@@ -72,7 +69,10 @@ const ProductsFilter = () => {
         <Label>Categories</Label>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline" className="   justify-between">
+            <Button
+              variant="outline"
+              className="   justify-between bg-transparent"
+            >
               {categories.length
                 ? `${categories.length} selected`
                 : "Select categories"}
@@ -87,8 +87,6 @@ const ProductsFilter = () => {
                     type="checkbox"
                     checked={categories.includes(cat)}
                     onChange={(e) => {
-                      console.log(e);
-
                       if (e.target.checked) setCategories([...categories, cat]);
                       else setCategories(categories.filter((c) => c !== cat));
                     }}
