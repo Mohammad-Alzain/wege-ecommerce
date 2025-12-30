@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { IProduct } from "@/data/products";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import AddToCartBtn from "../components/AddToCartBtn";
 

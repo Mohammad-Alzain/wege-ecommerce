@@ -12,14 +12,14 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   const addToCart = useCartStore((state) => state.addToCart);
 
   return (
-    <Link href={`/products/${product.id}`}>
-      <Card
-        className={twMerge(
-          "rounded-sm p-0 max-w-69 shadow-sm xl:w-69 hover:shadow-2xl hover:border-b-primary border-b-2 border-gray-100",
-          "transition-all group duration-300 cursor-pointer"
-        )}
-      >
-        <CardContent className="space-y-1 p-0 m-0 overflow-hidden">
+    <Card
+      className={twMerge(
+        "rounded-sm p-0 max-w-69 shadow-sm xl:w-69 hover:shadow-2xl hover:border-b-primary border-b-2 border-gray-100",
+        "transition-all group duration-300 "
+      )}
+    >
+      <Link href={`/products/${product.id}`}>
+        <CardContent className="space-y-1 p-0 m-0 overflow-hidden cursor-pointer">
           <div className="  overflow-hidden max-h-65">
             <Image
               unoptimized
@@ -40,26 +40,26 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             </p>
           </div>
         </CardContent>
-        <CardFooter className="p-2 m-0 flex items-center justify-between">
-          <span className="font-semibold text-sm text-gray-900">
-            ${product.price.toFixed(2)}
-          </span>
+      </Link>
+      <CardFooter className="p-2 m-0 flex items-center justify-between">
+        <span className="font-semibold text-sm text-gray-900">
+          ${product.price.toFixed(2)}
+        </span>
 
-          <Button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product);
-            }}
-            className={twMerge(
-              "flex items-center gap-1 rounded-sm bg-primary px-3 py-1 text-xs font-medium text-white transition hover:bg-primary/90",
-              "bg-transparent cursor-pointer border border-primary hover:border-primary/90 text-primary hover:bg-primary/10"
-            )}
-          >
-            <ShoppingCart size={14} />
-          </Button>
-        </CardFooter>
-      </Card>
-    </Link>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+          }}
+          className={twMerge(
+            "flex items-center gap-1 rounded-sm bg-primary px-3 py-1 text-xs font-medium text-white transition hover:bg-primary/90",
+            "bg-transparent cursor-pointer border border-primary hover:border-primary/90 text-primary hover:bg-primary/10"
+          )}
+        >
+          <ShoppingCart size={14} />
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
