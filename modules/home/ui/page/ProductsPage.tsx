@@ -5,10 +5,10 @@ import ProductsFilter from "../components/ProductsFilter";
 
 const ProductsPage = () => {
   return (
-    <div className=" flex flex-col items-center py-4   gap-16">
+    <main className=" flex flex-col items-center py-4   gap-16">
       <ProductsFilter />
       <ProductsList />
-    </div>
+    </main>
   );
 };
 

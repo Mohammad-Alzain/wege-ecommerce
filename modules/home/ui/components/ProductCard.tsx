@@ -26,7 +26,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               alt={product?.title}
               width={200}
               height={200}
-              className="w-full group-hover:scale-110 transition-all duration-500 object-cover"
+              className="w-full group-hover:scale-110 max-h-57 h-57 transition-all duration-500 object-cover"
             />
           </div>
           {/* title + desctroption */}
@@ -34,7 +34,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <p className=" truncate p-2 group-hover:text-primary transition-all duration-500 font-medium text-sm">
               {product?.title}
             </p>
-            <p className=" text-xs text-gray-400 text-start overflow-hidden ps-2  w-[90%] truncate  ">
+            <p className=" text-xs text-gray-800 text-start overflow-hidden ps-2  w-[90%] truncate  ">
               {product?.description}
             </p>
           </div>
@@ -46,6 +46,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </span>
 
         <Button
+          aria-label="add to cart btn"
           onClick={(e) => {
             e.stopPropagation();
             addToCart(product);

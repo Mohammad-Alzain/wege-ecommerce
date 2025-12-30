@@ -13,5 +13,9 @@ export default async function ProductPage({ params }: PageProps) {
 
   const product = await fetchProductById(id);
 
-  return <ProductDetails product={product} />;
+  return (
+    <main>
+      <ProductDetails product={product} />;
+    </main>
+  );
 }

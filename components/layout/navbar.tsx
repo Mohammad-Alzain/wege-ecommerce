@@ -6,7 +6,7 @@ import Logo from "../ui/Logo";
 const Navbar = () => {
   return (
     <div className="flex items-center justify-between w-full fixed shadow-sm p-3 px-12 bg-white z-50">
-      <Link href={"/"} className="text-primary ">
+      <Link href="/" aria-label="Go to homepage" className="text-primary ">
         <Logo />
       </Link>
       <CartButton />

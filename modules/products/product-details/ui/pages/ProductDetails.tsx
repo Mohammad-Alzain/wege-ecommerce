@@ -99,7 +99,10 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
           {/* Actions */}
           <div className="flex gap-4 mt-6">
             <AddToCartBtn product={product} />
-            <button className="px-5 py-3 border rounded-md hover:bg-gray-100 transition">
+            <button
+              aria-label="Add Item to the favorite"
+              className="px-5 py-3 border rounded-md hover:bg-gray-100 transition"
+            >
               <Heart />
             </button>
           </div>

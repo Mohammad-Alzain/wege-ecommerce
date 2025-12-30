@@ -93,6 +93,7 @@ const CartItemCard = ({ product }: { product: ICartItem }) => {
           <div className="text-sm  flex items-center gap-2 w-full">
             <span>Quantity:</span>{" "}
             <Input
+              aria-label="Item Quantity"
               type="number"
               min={1}
               value={quantity}
@@ -107,6 +108,7 @@ const CartItemCard = ({ product }: { product: ICartItem }) => {
             ${(product.price * product.quantity).toFixed(2)}
           </span>
           <Button
+            aria-label="Remove Item From Cart"
             onClick={handleRemoveItemFromCart}
             className="text-xs cursor-pointer border bg-transparent text-red-500 border-red-600 hover:bg-red-700/10 px-2 py-1 "
           >

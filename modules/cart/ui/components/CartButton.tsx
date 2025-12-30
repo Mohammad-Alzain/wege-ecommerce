@@ -11,7 +11,7 @@ const CartButton = () => {
 
   return (
     <div className="relative inline-block">
-      <Link href={"/cart"}>
+      <Link aria-label="go to the cart page" href={"/cart"}>
         <ShoppingCart className="text-primary" size={24} />
       </Link>
 
