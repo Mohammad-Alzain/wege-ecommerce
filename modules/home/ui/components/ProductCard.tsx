@@ -22,7 +22,6 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <CardContent className="space-y-1 p-0 m-0 overflow-hidden cursor-pointer">
           <div className="  overflow-hidden max-h-65">
             <Image
-              unoptimized
               src={product.images?.[0]}
               alt={product?.title}
               width={200}

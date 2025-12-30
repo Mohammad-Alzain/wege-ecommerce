@@ -78,7 +78,6 @@ const CartItemCard = ({ product }: { product: ICartItem }) => {
         className="w-28 h-28 max-sm:w-24 max-sm:h-24 object-cover rounded"
         src={product?.images?.[0]}
         alt={product?.title + " image"}
-        unoptimized
       />
       <div className="flex flex-col items-start gap-4 grow">
         {/* name */}

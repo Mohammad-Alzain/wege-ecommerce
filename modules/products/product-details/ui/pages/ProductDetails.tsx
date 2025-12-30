@@ -25,7 +25,6 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
                 }`}
               >
                 <Image
-                  unoptimized
                   width={48}
                   height={48}
                   src={img}
@@ -39,7 +38,6 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
           {/* Image */}
           <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-lg">
             <Image
-              unoptimized
               width={420}
               height={420}
               src={activeImage}
